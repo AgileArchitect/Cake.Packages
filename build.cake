@@ -71,7 +71,7 @@ Task("Publish")
     	if(string.IsNullOrEmpty(apiKey))    
         	throw new InvalidOperationException("Could not resolve Nuget API key.");
 		
-		var package = "./nuget/Cake.Packages." + version + ".nupkg";
+		var package = artifacts + "/Cake.Packages." + version + ".nupkg";
             
 		// Push the package.
 		NuGetPush(package, new NuGetPushSettings {
