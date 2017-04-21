@@ -8,7 +8,7 @@ var buildNumber = AppVeyor.Environment.Build.Number;
 var local = BuildSystem.IsLocalBuild;
 var isRunningOnAppVeyor = AppVeyor.IsRunningOnAppVeyor;
 
-var version = "0.1.0";
+var version = "0.1.1";
 var semVersion = local ? version : (version + string.Concat("+", buildNumber));
 
 var artifacts = "./artifacts";
