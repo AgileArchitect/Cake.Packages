@@ -1,6 +1,7 @@
 
 #addin "Cake.Git"
 
+
 var target = Argument("target", "Default");
 var buildNumber = AppVeyor.Environment.Build.Number;
 

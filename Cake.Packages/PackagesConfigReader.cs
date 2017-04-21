@@ -6,27 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cake.Common.Tools.NuGet.Pack;
-using Cake.Core;
-using Cake.Core.Annotations;
-using Cake.Core.IO;
 
 namespace Cake.Packages
 {
-    public static class PackagesAliases
-    {
-        [CakeMethodAlias]
-        public static IEnumerable ReadPackagesConfig(this ICakeContext context, ICakeEnvironment environment, FilePath pathToPackagesConfig)
-        {
-            return PackagesConfigReader.GetDependencies(pathToPackagesConfig.MakeAbsolute(environment).FullPath);
-        }
-    }
-
     public static class PackagesConfigReader
     {
         public static IEnumerable<NuSpecDependency> GetDependencies(string packagesFile)
         {
             if (!File.Exists(packagesFile))
-                throw new FileNotFoundException();
+                throw new FileNotFoundException("Packages file not found", packagesFile);
 
             System.Xml.XmlDocument packages = new System.Xml.XmlDocument();
             var lines = File.ReadAllLines(packagesFile);
